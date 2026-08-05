@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vital Classes | Empowering Academic Excellence</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        vitalNavy: '#2B2B88',
+                        vitalNavyDark: '#1A1A5E',
+                        vitalRed: '#E52B28',
+                        vitalYellow: '#FCD116',
+                        vitalLight: '#F8FAFC'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.4' },
+                            '50%': { opacity: '0.8' },
+                        }
+                    },
+                    animation: {
+                        float: 'float 2.5s ease-in-out infinite',
+                        pulseGlow: 'pulseGlow 3s ease-in-out infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 43, 40, 0.1);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #1A1A5E 0%, #2B2B88 60%, #11113A 100%);
+        }
+        .text-gradient-yellow {
+            background: linear-gradient(90deg, #FCD116 0%, #FFF59D 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Container Panel for Floating Elements */
+    .sticky-contact-panel {
+        position: fixed;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%); /* Centers the panel perfectly on the vertical axis */
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 99999; /* Higher priority depth layer to float over all components */
+    }
+
+    /* Base Interactive Button Settings */
+    .sticky-contact-panel .action-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 14px;
+        border-radius: 50px; /* Elegant circular/pill shapes */
+        color: #FFFFFF !important;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        min-width: 50px;
+        height: 50px;
+    }
+
+    /* Brand Background Colors */
+    .sticky-contact-panel .call-btn {
+        background-color: #EF4444; /* Clean premium Red for call alert actions */
+    }
+
+    .sticky-contact-panel .whatsapp-btn {
+        background-color: #25D366; /* Authentic WhatsApp Green */
+    }
+
+    /* Hide the written text label on desktop until hover to keep UI minimal */
+    .sticky-contact-panel .btn-label {
+        display: none;
+        white-space: nowrap;
+    }
+
+    .sticky-contact-panel .action-btn i {
+        font-size: 1.3rem;
+    }
+
+    /* --- Desktop Micro-Interactions --- */
+    @media (min-width: 769px) {
+        .sticky-contact-panel .action-btn:hover {
+            padding: 14px 24px;
+            border-radius: 30px;
+            transform: scale(1.05);
+        }
+        
+        /* Reveal text label smoothly on hover */
+        .sticky-contact-panel .action-btn:hover .btn-label {
+            display: inline-block;
+        }
+    }
+
+/* --- Mobile Adaptive Optimization --- */
+    @media (max-width: 768px) {
+        .sticky-contact-panel {
+            right: 12px;
+            top: auto;
+            bottom: 30px; /* Shifts down seamlessly on phones out of the user's reading line */
+            transform: none;
+            gap: 8px;
+        }
+
+        /* Convert buttons to perfectly sized tap zones for mobile devices */
+        .sticky-contact-panel .action-btn {
+            width: 48px;
+            height: 48px;
+            padding: 0;
+            border-radius: 50%;
+        }
+
+        .sticky-contact-panel .action-btn i {
+            font-size: 1.25rem;
+        }
+        
+        /* Always keep text labels hidden on mobile to prevent layout clipping */
+        .sticky-contact-panel .btn-label {
+            display: none !important;
+        }
+    }
+
+        
+
+
+
+
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-vitalYellow selection:text-vitalNavy">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-md" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo Brand -->
+
+
+                <!-- Updated Navbar Logo -->
+    <a href="#" class="flex items-center space-x-3 group">
+        <div class="h-16 w-auto flex items-center justify-center">
+            <img src="logo3.png" alt="Vital Classes Logo" class="h-full w-auto object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-105" draggable="false">
+        </div>
+        <div class="flex flex-col">
+                        <span class="text-2xl font-black tracking-wider text-vitalNavy uppercase leading-none">Vital</span>
+                        <span class="text-xs font-bold text-vitalRed tracking-widest uppercase">Classes</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center space-x-8 font-medium text-slate-700">
+                    <a href="#about" class="hover:text-vitalRed transition-colors">About</a>
+                    <a href="#founder" class="hover:text-vitalRed transition-colors">Founder</a>
+                    <a href="#courses" class="hover:text-vitalRed transition-colors">Courses</a>
+                    <a href="#gallery" class="hover:text-vitalRed transition-colors">Academic Gallery</a>
+                    <a href="#results" class="hover:text-vitalRed transition-colors">Results</a>
+                    <a href="#testimonials" class="hover:text-vitalRed transition-colors">Testimonials</a>
+                    <a href="#contact" class="px-5 py-2.5 rounded-full bg-vitalRed text-white font-semibold hover:bg-red-700 transition-all shadow-lg shadow-vitalRed/20 hover:shadow-vitalRed/40 transform hover:-translate-y-0.5">Enroll Now</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-vitalNavy hover:text-vitalRed focus:outline-none">
+                        <i data-lucide="menu" class="w-8 h-8"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" class="block py-2 text-slate-700 font-medium hover:text-vitalRed">About Us</a>
+            <a href="#founder" class="block py-2 text-slate-700 font-medium hover:text-vitalRed">Founder Message</a>
+            <a href="#gallery" class="block py-2 text-slate-700 font-medium hover:text-vitalRed">Academic Gallery</a>
+            <a href="#results" class="block py-2 text-slate-700 font-medium hover:text-vitalRed">Our Results</a>
+            <a href="#testimonials" class="block py-2 text-slate-700 font-medium hover:text-vitalRed">Testimonials</a>
+            <a href="#contact" class="block text-center py-3 rounded-xl bg-vitalRed text-white font-semibold shadow-md">Contact Us</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen pt-28 pb-16 hero-gradient overflow-hidden flex items-center">
+        <!-- Abstract Background Orbs -->
+        <div class="absolute top-1/4 -left-20 w-80 h-80 bg-vitalRed/20 rounded-full filter blur-3xl animate-pulseGlow"></div>
+        <div class="absolute bottom-10 right-0 w-96 h-96 bg-vitalYellow/10 rounded-full filter blur-3xl animate-pulseGlow"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Hero Text -->
+                <div class="text-white space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-vitalYellow text-sm font-semibold">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                        <span>Igniting Academic Excellence</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight">
+                        Shaping Futures with <span class="text-gradient-yellow">Precision & Vision</span>
+                    </h1>
+                    <p class="text-slate-300 text-lg sm:text-xl max-w-xl mx-auto lg:mx-0 font-light">
+                        Vital Classes offers top-tier coaching designed to unlock student potential, foster conceptual clarity, and pave the way to top-tier academic achievements.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+                        <a href="#contact" class="px-8 py-4 rounded-xl bg-vitalYellow text-vitalNavy font-bold text-lg hover:bg-yellow-400 transition-all shadow-lg shadow-vitalYellow/20 hover:scale-105 flex items-center justify-center space-x-2">
+                            <span>Get Started Today</span>
+                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#results" class="px-8 py-4 rounded-xl bg-white/10 border border-white/20 text-white font-semibold text-lg hover:bg-white/20 transition-all flex items-center justify-center space-x-2">
+                            <span>View Success Stories</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Crest Visual Display -->
+                <!-- Hero Crest Visual Display -->
+                <div class="relative flex justify-center items-center">
+                    <div class="relative w-72 h-72 sm:w-96 sm:h-96 animate-float">
+                        <!-- Background Glow Effect -->
+                        <div class="absolute inset-0 bg-vitalYellow/20 rounded-full filter blur-2xl"></div>
+                        <!-- Your Logo Image -->
+                        <div class="relative w-full h-full flex items-center justify-center">
+                            <img src="logo3.png" alt="Vital Classes Logo" class="w-full h-full object-contain drop-shadow-2xl mix-blend-multiply">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar Component -->
+    <section class="relative -mt-10 z-20 max-w-6xl mx-auto px-4">
+        <div class="bg-white rounded-2xl shadow-xl p-8 grid grid-cols-2 md:grid-cols-4 gap-6 border border-slate-100 text-center">
+            <div class="space-y-1">
+                <div class="text-3xl sm:text-4xl font-extrabold text-vitalNavy counter" data-target="28">0</div>
+                <div class="text-sm font-medium text-slate-500 uppercase tracking-wider">Years Experience</div>
+            </div>
+            <div class="space-y-1 border-l border-slate-100">
+                <div class="text-3xl sm:text-4xl font-extrabold text-vitalRed counter" data-target="2750">0</div>
+                <div class="text-sm font-medium text-slate-500 uppercase tracking-wider">Students Trained</div>
+            </div>
+            <div class="space-y-1 border-l sm:border-l-1 border-slate-100">
+                <div class="text-3xl sm:text-4xl font-extrabold text-vitalNavy counter" data-target="98">0</div>
+                <div class="text-sm font-medium text-slate-500 uppercase tracking-wider">% Success Rate</div>
+            </div>
+            <div class="space-y-1 border-l border-slate-100">
+                <div class="text-3xl sm:text-4xl font-extrabold text-vitalRed">Est. 1998</div>
+                <div class="text-sm font-medium text-slate-500 uppercase tracking-wider">28 Years of Vital</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <h2 class="text-sm font-bold text-vitalRed uppercase tracking-widest">About Vital Classes</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-vitalNavy">Dedicated to Empowering Minds & Building Careers</h3>
+                <div class="w-16 h-1 bg-vitalYellow mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card p-8 rounded-2xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-t-vitalNavy">
+                    <div class="w-14 h-14 rounded-xl bg-vitalNavy/10 flex items-center justify-center text-vitalNavy mb-6">
+                        <i data-lucide="book-open" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-vitalNavy mb-3">Structured Pedagogy</h4>
+                    <p class="text-slate-600 leading-relaxed">
+                        Our carefully planned curriculum ensures comprehensive coverage of foundational concepts followed by rigorous problem-solving sessions.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-8 rounded-2xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-t-vitalRed">
+                    <div class="w-14 h-14 rounded-xl bg-vitalRed/10 flex items-center justify-center text-vitalRed mb-6">
+                        <i data-lucide="users" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-vitalNavy mb-3">Expert Mentorship</h4>
+                    <p class="text-slate-600 leading-relaxed">
+                        Learn from seasoned educators committed to delivering personalized attention and identifying unique strengths in every student.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-8 rounded-2xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-t-vitalYellow">
+                    <div class="w-14 h-14 rounded-xl fill-vitalYellow bg-amber-500/10 flex items-center justify-center text-amber-600 mb-6">
+                        <i data-lucide="target" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-vitalNavy mb-3">Goal-Oriented Results</h4>
+                    <p class="text-slate-600 leading-relaxed">
+                        Continuous evaluation, mock examinations, and targeted feedback ensure students remain consistently prepared for competitive exams.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section id="founder" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-vitalNavy to-vitalNavyDark rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden">
+                <!-- Decorative Elements -->
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-vitalRed/20 rounded-full blur-2xl"></div>
+                
+                <div class="grid lg:grid-cols-12 gap-8 items-center relative z-10">
+                    <!-- Image Avatar Block -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative">
+                            <div class="w-64 h-64 sm:w-80 sm:h-80 rounded-2xl overflow-hidden border-4 border-vitalYellow/80 shadow-2xl bg-slate-200">
+                                <img src="found.jpg" alt="Founder Portrait" class="w-full h-full object-cover" draggable="false">
+                            </div>
+                            <div class="absolute -bottom-4 -right-4 bg-vitalRed text-white px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase shadow-lg">
+                                Founder & Director
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Founder Text -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="inline-block px-3 py-1 bg-vitalYellow/20 text-vitalYellow rounded-full text-sm font-semibold">
+                            Director's Message
+                        </div>
+                        <h3 class="text-3xl sm:text-4xl font-extrabold text-white">"Education is not just learning facts, but training the mind to think."</h3>
+                        <p class="text-slate-300 text-lg leading-relaxed font-light">
+                            At Vital Classes, our mission is to create an environment where intellectual curiosity meets academic rigor. We believe every student possesses latent talent waiting to be unlocked with the right guidance, direction, and discipline.
+                        </p>
+                        <div class="pt-4 border-t border-white/10">
+                            <div class="text-xl font-bold text-vitalYellow">Prof.Kishor Tak</div>
+                            <div class="text-sm text-slate-400">Proprietor & Academic Head, Vital Classes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Courses / Our Programs Section -->
+<section id="courses" class="py-24 bg-slate-50 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-4xl sm:text-5xl font-extrabold text-vitalNavy tracking-tight">Our Programs</h2>
+            <p class="text-slate-600 text-lg mt-4">
+                Comprehensive coaching programs designed to help you achieve your academic goals
+            </p>
+        </div>
+
+        <!-- Program Cards Grid -->
+        <div class="grid md:grid-cols-2 gap-8">
+
+            <!-- Card 1: IIT-JEE -->
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100 flex flex-col justify-between transition-transform duration-300 hover:-translate-y-1">
+                <div>
+                    <!-- Card Top Header -->
+                    <div class="bg-vitalNavy text-white p-6 sm:p-8">
+                        <h3 class="text-2xl sm:text-3xl font-extrabold">IIT-JEE</h3>
+                        <p class="text-slate-300 text-sm mt-1">Mains + Advanced</p>
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="p-6 sm:p-8 space-y-6">
+                        <div>
+                            <span class="block text-xs font-bold text-slate-400 uppercase tracking-wider">Target Audience</span>
+                            <p class="text-vitalNavy font-bold text-lg mt-0.5">Class 11th & 12th</p>
+                        </div>
+
+                        <div>
+                            <span class="block text-xs font-bold text-slate-400 uppercase tracking-wider">Mode</span>
+                            <p class="text-vitalNavy font-bold text-lg mt-0.5">Online + Offline</p>
+                        </div>
+
+                        <div>
+                            <span class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Highlights</span>
+                            <ul class="space-y-3">
+                                <li class="flex items-start space-x-3 text-slate-600 text-sm">
+                                    <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                                    <span>Comprehensive coverage of Physics, Chemistry & Mathematics</span>
+                                </li>
+                                <li class="flex items-start space-x-3 text-slate-600 text-sm">
+                                    <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                                    <span>Regular mock tests and performance analysis</span>
+                                </li>
+                                <li class="flex items-start space-x-3 text-slate-600 text-sm">
+                                    <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                                    <span>Doubt clearing sessions with expert faculty</span>
+                                </li>
+                                <li class="flex items-start space-x-3 text-slate-600 text-sm">
+                                    <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                                    <span>Study material aligned with latest JEE pattern</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <div class="p-6 sm:p-8 pt-0">
+                    <a href="#contact" class="block w-full text-center py-3.5 bg-vitalYellow text-vitalNavy font-bold rounded-xl hover:bg-yellow-400 transition duration-300 shadow-md">
+                        Enquire Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 2: NEET -->
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100 flex flex-col justify-between transition-transform duration-300 hover:-translate-y-1">
+                <div>
+                    <!-- Card Top Header -->
+                    <div class="bg-vitalNavy text-white p-6 sm:p-8">
+                        <h3 class="text-2xl sm:text-3xl font-extrabold">NEET</h3>
+                        <p class="text-slate-300 text-sm mt-1">UG Medical Entrance</p>
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="p-6 sm:p-8 space-y-6">
+                        <div>
+                            <span class="block text-xs font-bold text-slate-400 uppercase tracking-wider">Target Audience</span>
+                            <p class="text-vitalNavy font-bold text-lg mt-0.5">Class 11th & 12th</p>
+                        </div>
+
+                        <div>
+                            <span class="block text-xs font-bold text-slate-400 uppercase tracking-wider">Mode</span>
+                            <p class="text-vitalNavy font-bold text-lg mt-0.5">Online + Offline</p>
+                        </div>
+
+                        <div>
+                            <span class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Highlights</span>
+                            <ul class="space-y-3">
+                                <li class="flex items-start space-x-3 text-slate-600 text-sm">
+                                    <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                                    <span>Complete syllabus coverage for Physics, Chemistry & Biology</span>
+                                </li>
+                                <li class="flex items-start space-x-3 text-slate-600 text-sm">
+                                    <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                                    <span>NCERT-focused approach with advanced problem solving</span>
+                                </li>
+                                <li class="flex items-start space-x-3 text-slate-600 text-sm">
+                                    <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                                    <span>Weekly tests and detailed performance reports</span>
+                                </li>
+                                <li class="flex items-start space-x-3 text-slate-600 text-sm">
+                                    <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                                    <span>Personalized mentorship for medical aspirants</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <div class="p-6 sm:p-8 pt-0">
+                    <a href="#contact" class="block w-full text-center py-3.5 bg-vitalYellow text-vitalNavy font-bold rounded-xl hover:bg-yellow-400 transition duration-300 shadow-md">
+                        Enquire Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 3: MHT-CET -->
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100 flex flex-col justify-between transition-transform duration-300 hover:-translate-y-1">
+                <div>
+                    <!-- Card Top Header -->
+                    <div class="bg-vitalNavy text-white p-6 sm:p-8">
+                        <h3 class="text-2xl sm:text-3xl font-extrabold">MHT-CET</h3>
+                        <p class="text-slate-300 text-sm mt-1">State Level Engineering & Medical</p>
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="p-6 sm:p-8 space-y-6">
+                        <div>
+                            <span class="block text-xs font-bold text-slate-400 uppercase tracking-wider">Target Audience</span>
+                            <p class="text-vitalNavy font-bold text-lg mt-0.5">Class 11th & 12th</p>
+                        </div>
+
+                        <div>
+                            <span class="block text-xs font-bold text-slate-400 uppercase tracking-wider">Mode</span>
+                            <p class="text-vitalNavy font-bold text-lg mt-0.5">Online + Offline</p>
+                        </div>
+
+                        <div>
+                            <span class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Highlights</span>
+                            <ul class="space-y-3">
+                                <li class="flex items-start space-x-3 text-slate-600 text-sm">
+                                    <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                                    <span>State board aligned curriculum</span>
+                                </li>
+                                <li class="flex items-start space-x-3 text-slate-600 text-sm">
+                                    <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                                    <span>Focus on Maharashtra state syllabus</span>
+                                </li>
+                                <li class="flex items-start space-x-3 text-slate-600 text-sm">
+                                    <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                                    <span>Regular practice sessions and mock drills</span>
+                                </li>
+                                <li class="flex items-start space-x-3 text-slate-600 text-sm">
+                                    <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                                    <span>Expert guidance for state-level entrance exams</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <div class="p-6 sm:p-8 pt-0">
+                    <a href="#contact" class="block w-full text-center py-3.5 bg-vitalYellow text-vitalNavy font-bold rounded-xl hover:bg-yellow-400 transition duration-300 shadow-md">
+                        Enquire Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 4: Foundation -->
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100 flex flex-col justify-between transition-transform duration-300 hover:-translate-y-1">
+                <div>
+                    <!-- Card Top Header -->
+                    <div class="bg-vitalNavy text-white p-6 sm:p-8">
+                        <h3 class="text-2xl sm:text-3xl font-extrabold">Foundation</h3>
+                        <p class="text-slate-300 text-sm mt-1">Class 8th to 10th</p>
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="p-6 sm:p-8 space-y-6">
+                        <div>
+                            <span class="block text-xs font-bold text-slate-400 uppercase tracking-wider">Target Audience</span>
+                            <p class="text-vitalNavy font-bold text-lg mt-0.5">Building Strong Basics</p>
+                        </div>
+
+                        <div>
+                            <span class="block text-xs font-bold text-slate-400 uppercase tracking-wider">Mode</span>
+                            <p class="text-vitalNavy font-bold text-lg mt-0.5">Online + Offline</p>
+                        </div>
+
+                        <div>
+                            <span class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Highlights</span>
+                            <ul class="space-y-3">
+                                <li class="flex items-start space-x-3 text-slate-600 text-sm">
+                                    <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                                    <span>Conceptual clarity in Science & Mathematics</span>
+                                </li>
+                                <li class="flex items-start space-x-3 text-slate-600 text-sm">
+                                    <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                                    <span>Early preparation for competitive exams</span>
+                                </li>
+                                <li class="flex items-start space-x-3 text-slate-600 text-sm">
+                                    <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                                    <span>Interactive learning methodology</span>
+                                </li>
+                                <li class="flex items-start space-x-3 text-slate-600 text-sm">
+                                    <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                                    <span>Regular assessments and parent feedback</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <div class="p-6 sm:p-8 pt-0">
+                    <a href="#contact" class="block w-full text-center py-3.5 bg-vitalYellow text-vitalNavy font-bold rounded-xl hover:bg-yellow-400 transition duration-300 shadow-md">
+                        Enquire Now
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+    <!-- Academic Gallery Section -->
+   <!-- Academic Gallery Section -->
+<section id="gallery" class="py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <h2 class="text-sm font-bold text-vitalRed uppercase tracking-widest">Campus & Life</h2>
+            <h3 class="text-3xl sm:text-4xl font-extrabold text-vitalNavy">Academic Gallery</h3>
+            <div class="w-16 h-1 bg-vitalYellow mx-auto rounded-full"></div>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Visible Gallery Items (First 6) -->
+            <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer h-72 w-full bg-slate-200" onclick="openLightbox('a7.jpg', 'Interactive Classroom Session')">
+                <img src="a7.jpg" draggable="false" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Classroom">
+                <div class="absolute inset-0 bg-gradient-to-t from-vitalNavy/90 via-vitalNavy/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-semibold">Interactive Classroom Session</span>
+                </div>
+            </div>
+
+            <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer h-72 w-full bg-slate-200" onclick="openLightbox('a2.jpg', 'Advanced Science Laboratory')">
+                <img src="a2.jpg" draggable="false" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Lab">
+                <div class="absolute inset-0 bg-gradient-to-t from-vitalNavy/90 via-vitalNavy/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-semibold">Advanced Science Laboratory</span>
+                </div>
+            </div>
+
+            <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer h-72 w-full bg-slate-200" onclick="openLightbox('a3.jpg', 'Focused Study & Resource Library')">
+                <img src="a3.jpg" draggable="false" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Library">
+                <div class="absolute inset-0 bg-gradient-to-t from-vitalNavy/90 via-vitalNavy/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-semibold">Focused Study & Resource Library</span>
+                </div>
+            </div>
+
+            <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer h-72 w-full bg-slate-200" onclick="openLightbox('a4.jpg', 'Personalized Mentorship Sessions')">
+                <img src="a4.jpg" draggable="false" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Mentorship">
+                <div class="absolute inset-0 bg-gradient-to-t from-vitalNavy/90 via-vitalNavy/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-semibold">Personalized Mentorship Sessions</span>
+                </div>
+            </div>
+
+            <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer h-72 w-full bg-slate-200" onclick="openLightbox('a5.jpg', 'Seminars & Workshops')">
+                <img src="a5.jpg" draggable="false" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Seminars">
+                <div class="absolute inset-0 bg-gradient-to-t from-vitalNavy/90 via-vitalNavy/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-semibold">Seminars & Workshops</span>
+                </div>
+            </div>
+
+            <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer h-72 w-full bg-slate-200" onclick="openLightbox('a6.jpg', 'Annual Felicitations')">
+                <img src="a6.jpg" draggable="false" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Events">
+                <div class="absolute inset-0 bg-gradient-to-t from-vitalNavy/90 via-vitalNavy/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-semibold">Annual Felicitations</span>
+                </div>
+            </div>
+
+            <!-- Additional Gallery Items (Hidden by Default) -->
+            <div class="hidden-gallery-item hidden group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer h-72 w-full bg-slate-200" onclick="openLightbox('a1.jpg', 'Campus Excellence')">
+                <img src="a1.jpg" draggable="false" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Campus">
+                <div class="absolute inset-0 bg-gradient-to-t from-vitalNavy/90 via-vitalNavy/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-semibold">Campus Excellence</span>
+                </div>
+            </div>
+
+            <div class="hidden-gallery-item hidden group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer h-72 w-full bg-slate-200" onclick="openLightbox('a8.jpg', 'Interactive Learning Modules')">
+                <img src="a8.jpg" draggable="false" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Learning">
+                <div class="absolute inset-0 bg-gradient-to-t from-vitalNavy/90 via-vitalNavy/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-semibold">Interactive Learning Modules</span>
+                </div>
+            </div>
+
+            <div class="hidden-gallery-item hidden group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer h-72 w-full bg-slate-200" onclick="openLightbox('a9.jpg', 'Student Achievements')">
+                <img src="a9.jpg" draggable="false" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Achievements">
+                <div class="absolute inset-0 bg-gradient-to-t from-vitalNavy/90 via-vitalNavy/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-semibold">Student Achievements</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- View All Button -->
+        <div class="mt-12 text-center">
+            <button id="toggle-gallery-btn" onclick="toggleGallery()" class="px-8 py-4 bg-vitalNavy text-white font-bold rounded-xl shadow-lg hover:bg-vitalNavyDark hover:scale-105 transition-all duration-300 inline-flex items-center space-x-2">
+                <span id="gallery-btn-text">View All Academic Gallery</span>
+                <i data-lucide="chevron-down" id="gallery-btn-icon" class="w-5 h-5 transition-transform duration-300"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+    <!-- Results Section -->
+    <section id="results" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <h2 class="text-sm font-bold text-vitalRed uppercase tracking-widest">Hall of Fame</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-vitalNavy">Our Top Achievers</h3>
+                <div class="w-16 h-1 bg-vitalYellow mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Result Card 1 -->
+                <div class="bg-slate-50 rounded-2xl p-6 text-center border border-slate-100 shadow-md hover:shadow-xl transition-all">
+                    <div class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 border-4 border-vitalYellow shadow-md">
+                        <img src="a10.jpg" class="w-full h-full object-cover" alt="Student" draggable="false">
+                    </div>
+                    <div class="inline-block px-3 py-1 bg-vitalNavy text-vitalYellow text-xs font-bold rounded-full mb-2">AIR 45</div>
+                    <h4 class="text-lg font-bold text-slate-800">Rhea Srivastava</h4>
+                    <p class="text-vitalRed font-semibold text-sm">Score: 99.4%</p>
+                </div>
+
+                <!-- Result Card 2 -->
+                <div class="bg-slate-50 rounded-2xl p-6 text-center border border-slate-100 shadow-md hover:shadow-xl transition-all">
+                    <div class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 border-4 border-vitalYellow shadow-md">
+                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover" alt="Student">
+                    </div>
+                    <div class="inline-block px-3 py-1 bg-vitalNavy text-vitalYellow text-xs font-bold rounded-full mb-2">AIR 82</div>
+                    <h4 class="text-lg font-bold text-slate-800">Aarav Patel</h4>
+                    <p class="text-vitalRed font-semibold text-sm">Score: 98.8%</p>
+                </div>
+
+                <!-- Result Card 3 -->
+                <div class="bg-slate-50 rounded-2xl p-6 text-center border border-slate-100 shadow-md hover:shadow-xl transition-all">
+                    <div class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 border-4 border-vitalYellow shadow-md">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover" alt="Student">
+                    </div>
+                    <div class="inline-block px-3 py-1 bg-vitalNavy text-vitalYellow text-xs font-bold rounded-full mb-2">AIR 112</div>
+                    <h4 class="text-lg font-bold text-slate-800">Ananya Verma</h4>
+                    <p class="text-vitalRed font-semibold text-sm">Score: 98.2%</p>
+                </div>
+
+                <!-- Result Card 4 -->
+                <div class="bg-slate-50 rounded-2xl p-6 text-center border border-slate-100 shadow-md hover:shadow-xl transition-all">
+                    <div class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 border-4 border-vitalYellow shadow-md">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover" alt="Student">
+                    </div>
+                    <div class="inline-block px-3 py-1 bg-vitalNavy text-vitalYellow text-xs font-bold rounded-full mb-2">AIR 150</div>
+                    <h4 class="text-lg font-bold text-slate-800">Karan Mehta</h4>
+                    <p class="text-vitalRed font-semibold text-sm">Score: 97.9%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <h2 class="text-sm font-bold text-vitalRed uppercase tracking-widest">Testimonials</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-vitalNavy">What Our Students & Parents Say</h3>
+                <div class="w-16 h-1 bg-vitalYellow mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex text-vitalYellow">
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        </div>
+                        <p class="text-slate-600 italic">"The clarity in concepts and constant encouragement from the faculty at Vital Classes helped me turn my weaknesses into strengths."</p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-slate-100 flex items-center space-x-4">
+                        <div class="font-bold text-vitalNavy">Priya N. <span class="block text-xs font-normal text-slate-400">Student</span></div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex text-vitalYellow">
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        </div>
+                        <p class="text-slate-600 italic">"As a parent, I am deeply impressed by the disciplined environment and individual tracking provided for each student."</p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-slate-100 flex items-center space-x-4">
+                        <div class="font-bold text-vitalNavy">Rajesh Kumar <span class="block text-xs font-normal text-slate-400">Parent</span></div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex text-vitalYellow">
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        </div>
+                        <p class="text-slate-600 italic">"The test series and analysis sessions gave me immense confidence right before the final examinations."</p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-slate-100 flex items-center space-x-4">
+                        <div class="font-bold text-vitalNavy">Siddharth Rao <span class="block text-xs font-normal text-slate-400">Student</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-12 items-start">
+            
+            <!-- Contact Info -->
+            <div class="lg:col-span-5 space-y-8">
+                <div>
+                    <h2 class="text-sm font-bold text-vitalRed uppercase tracking-widest">Get In Touch</h2>
+                    <h3 class="text-3xl font-extrabold text-vitalNavy mt-2">Start Your Journey with Vital Classes</h3>
+                    <p class="text-slate-600 mt-4">
+                        Have questions regarding courses, admissions, or schedules? Reach out to us directly or fill out the inquiry form.
+                    </p>
+                </div>
+
+                <!-- Contact Details List -->
+                <div class="space-y-4">
+                    
+                    <!-- Location Item -->
+                    <a href="https://maps.google.com/?q=2B+Pearl+CHS,+60+Feet,+Behind+Bavan+Jinalay,+Bhayander+West,+Mira-Bhayandar,+Maharashtra-401101" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="flex items-start space-x-4 p-3 rounded-xl hover:bg-slate-50 transition-colors duration-300 group block">
+                        <div class="w-12 h-12 rounded-xl bg-vitalNavy/10 text-vitalNavy group-hover:bg-vitalNavy group-hover:text-white flex items-center justify-center shrink-0 transition-colors duration-300">
+                            <i data-lucide="map-pin" class="w-6 h-6"></i>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <h4 class="font-bold text-vitalNavy">Location</h4>
+                            <p class="text-slate-600 text-sm leading-snug mt-0.5 group-hover:text-vitalNavy transition-colors">
+                                2B Pearl CHS, 60 Feet, Behind Bavan Jinalay, Bhayander West, Mira-Bhayandar, Maharashtra-401101
+                            </p>
+                        </div>
+                    </a>
+
+                    <!-- Phone Item -->
+                    <div class="flex items-start space-x-4 p-3 rounded-xl hover:bg-slate-50 transition-colors duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-vitalRed/10 text-vitalRed group-hover:bg-vitalRed group-hover:text-white flex items-center justify-center shrink-0 transition-colors duration-300">
+                            <i data-lucide="phone" class="w-6 h-6"></i>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <h4 class="font-bold text-vitalNavy">Phone</h4>
+                            <p class="text-slate-600 text-sm mt-0.5">
+                                <a href="tel:+919619736037" class="hover:text-vitalRed hover:underline font-medium transition-colors">+91 96197 36037</a> 
+                                <span class="text-slate-400 mx-1">/</span> 
+                                <a href="tel:+919820436037" class="hover:text-vitalRed hover:underline font-medium transition-colors">+91 98204 36037</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Email Item -->
+                    <a href="mailto:info@vitalclasses.com?subject=Inquiry%20Regarding%20Courses" 
+                       class="flex items-start space-x-4 p-3 rounded-xl hover:bg-slate-50 transition-colors duration-300 group block">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 group-hover:bg-amber-500 group-hover:text-white flex items-center justify-center shrink-0 transition-colors duration-300">
+                            <i data-lucide="mail" class="w-6 h-6"></i>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <h4 class="font-bold text-vitalNavy">Email</h4>
+                            <p class="text-slate-600 text-sm mt-0.5 group-hover:text-vitalNavy transition-colors">
+                                info@vitalclasses.com
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+            
+
+                <!-- Contact Form -->
+                 
+                <div class="lg:col-span-7 bg-slate-50 p-8 sm:p-10 rounded-3xl shadow-xl border border-slate-100">
+                    <div class="mb-6 pr-6">
+            <h3 class="text-2xl font-extrabold text-vitalNavy">Admissions Open!!</h3>
+            <p class="text-slate-600 text-sm mt-1">Fill out the quick inquiry form below to get instant course details on WhatsApp.</p>
+        </div>
+    <form id="contact-form" onsubmit="sendToWhatsApp(event)" class="space-y-6">
+        <div class="grid sm:grid-cols-2 gap-6">
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Full Name *</label>
+                <input type="text" id="full_name" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-vitalNavy transition" placeholder="Anoop Mishra">
+            </div>
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Phone Number *</label>
+                <input type="tel" id="phone_number" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-vitalNavy transition" placeholder="+91 90828 00000">
+            </div>
+        </div>
+
+
+        <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-2">Select Course Interest *</label>
+            <select id="course_interest" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-vitalNavy transition">
+                <option value="Foundation Course">Foundation Course</option>
+                <option value="Competitive Prep">Competitive Prep</option>
+                <option value="Board Exam Excellence">Board Exam Excellence</option>
+            </select>
+        </div>
+
+        <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-2">Message / Query</label>
+            <textarea id="user_message" rows="4" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-vitalNavy transition" placeholder="How can we help you?"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-4 bg-vitalNavy text-white font-bold rounded-xl shadow-lg hover:bg-vitalNavyDark transition-all duration-300 transform hover:-translate-y-0.5">
+            Submit Inquiry
+        </button>
+    </form>
+
+    <div id="form-success" class="hidden mt-4 p-4 bg-emerald-100 text-emerald-800 rounded-xl text-center font-medium">
+        Thank you! Your message has been prepared. Opening WhatsApp...
+    </div>
+</div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-vitalNavyDark text-white pt-16 pb-8 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                         <img src="logo3.png" alt="Vital Classes Logo" draggable="false" class="h-16 w-auto object-contain self-start">
+                        <span class="text-2xl font-black text-white tracking-wider">VITAL</span>
+                        <span class="text-xs font-bold text-vitalYellow tracking-widest uppercase">CLASSES</span>
+                    </div>
+                    <p class="text-slate-400 text-sm">Empowering students through concept-based learning and dedicated mentorship.</p>
+                </div>
+
+
+                
+                <div>
+                    <h5 class="text-vitalYellow font-bold mb-4">Quick Links</h5>
+                    <ul class="space-y-2 text-slate-300 text-sm">
+    <li><a href="#about" class="hover:text-white">About Us</a></li>
+    <li><a href="#founder" class="hover:text-white">Founder</a></li>
+    <li><a href="#gallery" class="hover:text-white">Academic Gallery</a></li>
+    <li><a href="#results" class="hover:text-white">Results</a></li>
+    <li><button onclick="openModal('privacy-modal')" class="hover:text-vitalYellow transition-colors text-left">Privacy Policy</button></li>
+    <li><button onclick="openModal('terms-modal')" class="hover:text-vitalYellow transition-colors text-left">Terms & Conditions</button></li>
+</ul>
+                </div>
+                <div>
+                    <h5 class="text-vitalYellow font-bold mb-4">Courses</h5>
+                    <ul class="space-y-2 text-slate-300 text-sm">
+                        <li><a href="#" class="hover:text-white">Foundation Programs</a></li>
+                        <li><a href="#" class="hover:text-white">Competitive Test Series</a></li>
+                        <li><a href="#" class="hover:text-white">Specialized Doubt Coaching</a></li>
+                    </ul>
+                </div>
+                <div>
+        <h5 class="text-vitalYellow font-bold mb-4">Connect</h5>
+            <div class="flex space-x-6 text-slate-300">
+             <!-- Instagram -->
+                 <a href="https://www.instagram.com/vitalclasses/?hl=en" target="_blank" rel="noopener noreferrer" class="hover:text-vitalYellow transition-colors" aria-label="Instagram">
+                    <svg class="w-6 h-6 fill-none stroke-current stroke-2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                    </svg>
+                </a>
+            <!-- Facebook -->
+                <a href="#" class="hover:text-vitalYellow transition-colors" aria-label="Facebook">
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+        
+            <!-- YouTube -->
+                <a href="https://www.youtube.com/@vitalclasses" class="hover:text-vitalYellow transition-colors" aria-label="YouTube">
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                </a>
+    </div>
+</div>
+
+
+                
+            </div>
+            <div class="border-t border-slate-800 mt-12 pt-8 text-center text-slate-400 text-sm">
+    <p>
+        © 2026 Vital Classes. All rights reserved.<br> Powered by 
+        <a href="https://covalentx-technologies.github.io/#services" target="_blank" rel="noopener noreferrer" class="font-bold bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent hover:opacity-80 transition-opacity duration-300">
+            CovalentX Technologies
+        </a>
+    </p>
+</div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center p-4" onclick="closeLightbox()">
+        <div class="max-w-4xl w-full relative" onclick="event.stopPropagation()">
+            <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white hover:text-vitalYellow">
+                <i data-lucide="x" class="w-8 h-8"></i>
+            </button>
+            <img id="lightbox-img" src="" class="w-full rounded-xl max-h-[80vh] object-contain">
+            <p id="lightbox-caption" class="text-center text-white mt-4 font-semibold text-lg"></p>
+        </div>
+    </div>
+
+
+
+    <!-- Privacy Policy Modal -->
+<div id="privacy-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[80vh] flex flex-col shadow-2xl relative overflow-hidden" onclick="event.stopPropagation()">
+        <!-- Modal Header -->
+        <div class="px-6 py-4 bg-vitalNavy text-white flex justify-between items-center border-b border-slate-100">
+            <h3 class="text-xl font-bold">Privacy Policy</h3>
+            <button onclick="closeModal('privacy-modal')" class="text-slate-300 hover:text-vitalYellow">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+        <!-- Modal Content -->
+        <div class="p-6 space-y-4 overflow-y-auto text-slate-600 text-sm leading-relaxed">
+            <p class="font-semibold text-slate-800">Last updated: August 2026</p>
+            
+            <h4 class="font-bold text-vitalNavy text-base">1. Information We Collect</h4>
+            <p>At Vital Classes, we collect minimal personal information necessary to handle course inquiries and admissions. This includes your name, phone number, email address, and course preferences submitted via our contact forms.</p>
+            
+            <h4 class="font-bold text-vitalNavy text-base">2. How We Use Your Information</h4>
+            <p>Your details are strictly used to respond to your inquiries, provide course information, and schedule counseling sessions. We do not sell or share your data with third-party advertisers.</p>
+            
+            <h4 class="font-bold text-vitalNavy text-base">3. WhatsApp Communication</h4>
+            <p>When submitting an inquiry form, you are directed to WhatsApp to complete your message. By continuing, you consent to receive direct communications regarding your academic queries from Vital Classes.</p>
+            
+            <h4 class="font-bold text-vitalNavy text-base">4. Contact Us</h4>
+            <p>If you have any questions regarding your personal privacy, please reach out via email at <span class="font-semibold text-vitalNavy">info@vitalclasses.com</span>.</p>
+        </div>
+        <!-- Modal Footer -->
+        <div class="px-6 py-3 bg-slate-50 border-t border-slate-100 flex justify-end">
+            <button onclick="closeModal('privacy-modal')" class="px-5 py-2 bg-vitalNavy text-white font-semibold rounded-lg hover:bg-vitalNavyDark transition">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- Terms & Conditions Modal -->
+<div id="terms-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[80vh] flex flex-col shadow-2xl relative overflow-hidden" onclick="event.stopPropagation()">
+        <!-- Modal Header -->
+        <div class="px-6 py-4 bg-vitalNavy text-white flex justify-between items-center border-b border-slate-100">
+            <h3 class="text-xl font-bold">Terms & Conditions</h3>
+            <button onclick="closeModal('terms-modal')" class="text-slate-300 hover:text-vitalYellow">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+        <!-- Modal Content -->
+        <div class="p-6 space-y-4 overflow-y-auto text-slate-600 text-sm leading-relaxed">
+            <p class="font-semibold text-slate-800">Effective Date: August 2026</p>
+
+            <h4 class="font-bold text-vitalNavy text-base">1. Intellectual Property</h4>
+            <p>All curriculum material, branding logos, test series content, and media uploaded on this website belong exclusively to Vital Classes. Reproduction or redistribution without written consent is prohibited.</p>
+
+            <h4 class="font-bold text-vitalNavy text-base">2. Course Admissions</h4>
+            <p>Inquiries submitted through this website do not guarantee immediate enrollment. Seat allocation is subject to availability, eligibility verification, and completion of formal admission procedures.</p>
+
+            <h4 class="font-bold text-vitalNavy text-base">3. Code of Conduct</h4>
+            <p>Students and parents engaging with our institution are expected to maintain respect toward faculty, staff, and fellow peers across physical premises and digital channels.</p>
+
+            <h4 class="font-bold text-vitalNavy text-base">4. Revisions</h4>
+            <p>Vital Classes reserves the right to modify these terms, course offerings, and fee structures at any time without prior notice.</p>
+        </div>
+        <!-- Modal Footer -->
+        <div class="px-6 py-3 bg-slate-50 border-t border-slate-100 flex justify-end">
+            <button onclick="closeModal('terms-modal')" class="px-5 py-2 bg-vitalNavy text-white font-semibold rounded-lg hover:bg-vitalNavyDark transition">Close</button>
+        </div>
+    </div>
+</div>
+
+
+    <div class="sticky-contact-panel">
+        <!-- Call Action Button -->
+        <a href="tel:+919082670934" class="action-btn call-btn" aria-label="Call Now">
+            <i class="fa-solid fa-phone"></i>
+            <span class="btn-label">Call Now</span>
+        </a>
+        
+        <!-- WhatsApp Action Button -->
+        <a href="https://wa.me/919082670934?text=Hello!%20I%20am%20interested%20in%20enquiring%20about%20Promise%20Academy%20courses." 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="action-btn whatsapp-btn" 
+        aria-label="WhatsApp Now">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span class="btn-label">WhatsApp</span>
+        </a>
+    </div>
+
+
+    <!-- Automatic Inquiry Form Popup Modal -->
+<div id="inquiry-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    
+    <div class="bg-slate-50 text-slate-800 w-full max-w-lg p-6 sm:p-8 rounded-3xl shadow-2xl border border-slate-100 relative transform scale-95 transition-transform duration-300 id="modal-card"">
+        
+        <!-- Close Button (X) -->
+        <button onclick="closeInquiryModal()" class="absolute top-4 right-4 w-9 h-9 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-full flex items-center justify-center font-bold text-lg transition">
+            ✕
+        </button>
+
+        <div class="mb-6 pr-6">
+            <h3 class="text-2xl font-extrabold text-vitalNavy">Admissions Open 2026</h3>
+            <p class="text-slate-600 text-sm mt-1">Fill out the quick inquiry form below to get instant course details on WhatsApp.</p>
+        </div>
+
+        <!-- Popup Form -->
+        <form id="popup-contact-form" onsubmit="sendPopupToWhatsApp(event)" class="space-y-4">
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Full Name *</label>
+                <input type="text" id="popup_full_name" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-vitalNavy transition" placeholder="Anoop Mishra">
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Phone Number *</label>
+                    <input type="tel" id="popup_phone_number" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-vitalNavy transition" placeholder="+91 90828 00000">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Email Address *</label>
+                    <input type="email" id="popup_email_address" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-vitalNavy transition" placeholder="anoop@example.com">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Select Course Interest *</label>
+                <select id="popup_course_interest" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-vitalNavy transition">
+                    <option value="Foundation Course">Foundation Course</option>
+                    <option value="Competitive Prep">Competitive Prep</option>
+                    <option value="Board Exam Excellence">Board Exam Excellence</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Message / Query</label>
+                <textarea id="popup_user_message" rows="3" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-vitalNavy transition" placeholder="How can we help you?"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-3.5 bg-vitalNavy text-white font-bold rounded-xl shadow-lg hover:bg-vitalNavyDark transition-all duration-300">
+                Submit Inquiry
+            </button>
+        </form>
+
+        <div id="popup-form-success" class="hidden mt-4 p-3 bg-emerald-100 text-emerald-800 rounded-xl text-center text-sm font-medium">
+            Thank you! Opening WhatsApp...
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Dynamic Counters
+        const counters = document.querySelectorAll('.counter');
+        let animated = false;
+
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY + window.innerHeight;
+            const statsSection = document.querySelector('.counter');
+            if (statsSection && scrollPos > statsSection.offsetTop && !animated) {
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const updateCount = () => {
+                        const count = +counter.innerText;
+                        const inc = target / 50;
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc);
+                            setTimeout(updateCount, 30);
+                        } else {
+                            counter.innerText = target + '+';
+                        }
+                    };
+                    updateCount();
+                });
+                animated = true;
+            }
+        });
+
+        // Lightbox Handler
+        function openLightbox(src, caption) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox-caption').innerText = caption;
+            document.getElementById('lightbox').classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.add('hidden');
+        }
+
+        // Contact Form Submission Mock
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            document.getElementById('contact-form').reset();
+            document.getElementById('form-success').classList.remove('hidden');
+        }
+
+        // Modal Handlers for Privacy & Terms
+function openModal(modalId) {
+    document.getElementById(modalId).classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // Prevent main page scrolling when modal is active
+}
+
+function closeModal(modalId) {
+    document.getElementById(modalId).classList.add('hidden');
+    document.body.style.overflow = 'auto'; // Re-enable background scrolling
+}
+
+// Close modals when pressing the ESC key
+window.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeModal('privacy-modal');
+        closeModal('terms-modal');
+    }
+});
+
+
+function toggleGallery() {
+    const hiddenItems = document.querySelectorAll('.hidden-gallery-item');
+    const btnText = document.getElementById('gallery-btn-text');
+    const btnIcon = document.getElementById('gallery-btn-icon');
+    
+    let isExpanding = false;
+
+    hiddenItems.forEach(item => {
+        if (item.classList.contains('hidden')) {
+            item.classList.remove('hidden');
+            isExpanding = true;
+        } else {
+            item.classList.add('hidden');
+        }
+    });
+
+    if (isExpanding) {
+        btnText.innerText = "Show Less";
+        btnIcon.style.transform = "rotate(180deg)";
+    } else {
+        btnText.innerText = "View All Academic Gallery";
+        btnIcon.style.transform = "rotate(0deg)";
+    }
+}
+
+
+function sendToWhatsApp(event) {
+    event.preventDefault(); // Prevents standard page reload
+
+    // Target WhatsApp Phone Number (With Country Code, e.g., 91 for India)
+    const targetNumber = "919082809261"; 
+
+    // Read form inputs
+    const name = document.getElementById('full_name').value;
+    const phone = document.getElementById('phone_number').value;
+    const email = document.getElementById('email_address').value;
+    const course = document.getElementById('course_interest').value;
+    const message = document.getElementById('user_message').value || "No extra query provided.";
+
+    // Format WhatsApp message text nicely
+    const formattedMessage = 
+`* Hello Vital Classes Team,I would like to submit an admission enquiry:*
+----------------------------------
+*Name:* ${name}
+*Phone:* ${phone}
+*Email:* ${email}
+*Course Interest:* ${course}
+*Message:* ${message}`;
+
+    // Encode text for URL
+    const encodedText = encodeURIComponent(formattedMessage);
+
+    // Show success message container
+    const successBox = document.getElementById('form-success');
+    if (successBox) {
+        successBox.classList.remove('hidden');
+    }
+
+    // Open WhatsApp in a new window/tab or native app on mobile
+    window.open(`https://api.whatsapp.com/send?phone=${targetNumber}&text=${encodedText}`, '_blank');
+}
+
+
+
+
+
+// 1. Automatically open the modal when the website loads (after 1 second delay)
+window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        const modal = document.getElementById('inquiry-modal');
+        if (modal) {
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100', 'pointer-events-auto');
+        }
+    }, 1000); // Opens 1 second after site load
+});
+
+// 2. Close Modal Function
+function closeInquiryModal() {
+    const modal = document.getElementById('inquiry-modal');
+    if (modal) {
+        modal.classList.remove('opacity-100', 'pointer-events-auto');
+        modal.classList.add('opacity-0', 'pointer-events-none');
+    }
+}
+
+// 3. Handle Popup Form WhatsApp Submission
+function sendPopupToWhatsApp(event) {
+    event.preventDefault();
+
+    const targetNumber = "919619736037"; // Your target WhatsApp number
+
+    const name = document.getElementById('popup_full_name').value;
+    const phone = document.getElementById('popup_phone_number').value;
+    const email = document.getElementById('popup_email_address').value;
+    const course = document.getElementById('popup_course_interest').value;
+    const message = document.getElementById('popup_user_message').value || "No extra query provided.";
+
+    const formattedMessage = 
+`*New Website Visitor Inquiry - Vital Classes*
+----------------------------------
+*Name:* ${name}
+*Phone:* ${phone}
+*Email:* ${email}
+*Course Interest:* ${course}
+*Message:* ${message}`;
+
+    const encodedText = encodeURIComponent(formattedMessage);
+
+    // Show inline alert message
+    const successBox = document.getElementById('popup-form-success');
+    if (successBox) {
+        successBox.classList.remove('hidden');
+    }
+
+    // Open WhatsApp
+    window.open(`https://api.whatsapp.com/send?phone=${targetNumber}&text=${encodedText}`, '_blank');
+
+    // Close the popup modal after opening WhatsApp
+    setTimeout(() => {
+        closeInquiryModal();
+    }, 1500);
+}
+
+    </script>
+</body>
+</html>
